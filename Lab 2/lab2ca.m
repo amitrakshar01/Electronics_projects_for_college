@@ -1,0 +1,40 @@
+function lab2ca()
+  len=20;
+  n=0:len-1;
+  s=(2*n).^(0.9.^n);
+  w=-0.5+rand(1,length(n));
+  x=s+5*w;
+  figure(1)
+  subplot(2,1,1);
+  stem(n,s);
+  grid;
+  ylabel('s[n]'); 
+  xlabel('Time Index (n)');
+  title("Clean Signal");
+  subplot(2,1,2);
+  stem(n,x);
+  grid;
+  ylabel('x[n]'); 
+  xlabel('Time Index (n)');
+  title("Noise Corrupted Signal");
+  %ensemble average filter
+  y1=0;
+  y2=0;
+  M1=3;
+  M2=10;
+  y1=movmean(x,M1);
+  y2=movmean(x,M2);;
+  figure(2);
+  subplot(2,1,1);
+  stem(n,y1);
+  grid;
+  ylabel('y1[n]'); 
+  xlabel('Time Index (n)');
+  title("Moving Average M=3");
+  subplot(2,1,2);
+  stem(n,y2);
+  grid;
+  ylabel('y2[n]'); 
+  xlabel('Time Index (n)');
+  title("Moving Average M=10");
+  end;
